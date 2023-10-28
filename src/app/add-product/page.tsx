@@ -48,7 +48,7 @@ const AddProductPage = () => {
         <input
           required
           name="price"
-          placeholder="Price"
+          placeholder="Price in $"
           type="number"
           className="input input-bordered mb-3 w-full"
         />
