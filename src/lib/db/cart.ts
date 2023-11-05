@@ -1,9 +1,13 @@
 import { Prisma } from "@prisma/client";
 import { cookies } from "next/dist/client/components/headers";
-import prisma  from "./prisma";
+import prisma from "./prisma";
 
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } };
+}>;
+
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true };
 }>;
 
 export type ShoppingCart = CartWithProducts & {
@@ -29,7 +33,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
     size: cart.items.reduce((acc, item) => acc + item.quantity, 0),
     subtotal: cart.items.reduce(
       (acc, item) => acc + item.quantity * item.product.price,
-      0
+      0,
     ),
   };
 }
