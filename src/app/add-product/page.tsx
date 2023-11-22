@@ -2,6 +2,8 @@ import React from "react";
 import { redirect } from "next/navigation";
 import prisma from "../../lib/db/prisma";
 import SubmitButton from '../../components/SubmitButton';
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 export const metadata = {
   title: "Add product - Ecom",
 };
@@ -9,6 +11,11 @@ export const metadata = {
 async function addProduct(formData: FormData) {
   // a server endpoint to make post request
   "use server";
+  const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/add-product");
+  }
+  
   const name = formData.get("name")?.toString();
   const description = formData.get("description")?.toString();
   const imageUrl = formData.get("imageUrl")?.toString();
@@ -21,7 +28,12 @@ async function addProduct(formData: FormData) {
   redirect("/");
 }
 
-const AddProductPage = () => {
+export default async function AddProductPage() {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/add-product");
+  }
   return (
     <div>
       <h1 className="mb-3 text-lg font-bold">Add Product</h1>
@@ -60,4 +72,4 @@ const AddProductPage = () => {
   );
 };
 
-export default AddProductPage;
+
