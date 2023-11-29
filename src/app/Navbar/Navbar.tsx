@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ShoppingCartButton from "./ShoppingCartButton";
+import AddProductButton from "./AddProductButton";
 import UserMenuButton from "./UserMenuButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
@@ -41,6 +42,7 @@ export default async function Navbar() {
                             />
                         </div>
                     </form>
+                    <AddProductButton />
                     <ShoppingCartButton cart={cart} />
                     <UserMenuButton session={session}/>
                 </div>
