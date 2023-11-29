@@ -1,6 +1,6 @@
 import { getCart } from "@/lib/db/cart"
 import CartEntry from './CartEntry';
-import setproductQuantity from "./actions";
+import { setproductQuantity } from "./actions";
 import formatPrice from "@/lib/format";
 
 

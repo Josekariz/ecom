@@ -1,6 +1,6 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import prisma from "../../lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import SubmitButton from '../../components/SubmitButton';
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
