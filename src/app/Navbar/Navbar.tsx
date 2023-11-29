@@ -23,12 +23,12 @@ export default async function Navbar() {
     const session = await getServerSession(authOptions)
 
     return (
-        <div className="bg-base-100">
+        <div className="bg-yellow-600 glass text-neutral">
             <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row">
-                <div className="flex-1">
+                <div className="flex-1 ">
                     <Link href="/" className="btn-ghost btn text-xl normal-case">
-                        <Image src={logo} height={40} width={40} alt="Flowmazon logo" />
-                        Flowmazon
+                        <Image src={logo} height={40} width={40} alt="Ecom logo" />
+                        Ecom
                     </Link>
                 </div>
                 <div className="flex-none gap-2">
